@@ -10,12 +10,13 @@ puts "The first element is #{starting_array.first}"
 puts "The third element is #{starting_array[2]}"
 puts "The element with an index of 3 is #{starting_array[3]}"
 puts "The second from last element is #{starting_array[-2]}"
-puts "The first four elements are '#{starting_array.first(4)}'"
-puts "If we delete 5, 6 and 7 from the array, we're left with #{new_array}"
+puts "The first four elements are '#{starting_array.first(4).join(', ')}'"
+print 'If we delete 5, 6 and 7 from the array,'
+puts " we're left with [#{new_array.join(',')}]"
 print 'If we add 5 at the beginning of the array,'
-puts " we're left with #{new_array.unshift(5)} "
+puts " we're left with [#{new_array.unshift(5).join(',')}] "
 print 'If we add 6 at the end of the array,'
-puts " we're left with #{new_array.push(6)}"
+puts " we're left with [#{new_array.push(6).join(',')}]"
 puts "Only the elements #{new_array.keep_if { |number| number > 8 }} are > 8."
-print 'if we remove all the elements,'
+print 'If we remove all the elements,'
 puts " then the length of the array is #{new_array.clear.length}"
