@@ -21,10 +21,3 @@ class Register
     puts "Your change is $#{sprintf('%.2f', change)}"
   end
 end
-
-register = Register.new
-register.total
-register.purchase(3.78)
-register.total
-register.pay(5.00)
-register.total
