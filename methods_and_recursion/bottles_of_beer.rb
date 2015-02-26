@@ -1,34 +1,69 @@
 #!/usr/bin/env ruby
 
-def ending(number)
-  lyrics = <<lyrics
-#{number} bottle of beer on the wall, #{number} bottle of beer.
-Take one down and pass it around, no more bottles of beer on the wall.\n
-No more bottles of beer on the wall, no more bottles of beer.
-Go to the store and buy some more, 99 bottles of beer on the wall.
+def chorus(number, bottle, n_number, n_bottle)
+  <<lyrics
+#{number.capitalize} #{bottle} of beer on the wall, #{number} #{bottle} of beer.
+Take one down and pass it around, #{n_number} #{n_bottle} of beer on the wall.
+
 lyrics
-  print lyrics
 end
 
-def single_bottle(number)
-  lyrics = <<lyrics
-#{number} bottles of beer on the wall, #{number} bottles of beer.
-Take one down and pass it around, #{number - 1} bottle of beer on the wall.\n
-lyrics
-  print lyrics
+def ending(number, bottle, n_number, n_bottle)
+  <<ending
+#{number.capitalize} #{bottle} of beer on the wall, #{number} #{bottle} of beer.
+Go to the store and buy some more, #{n_number} #{n_bottle} of beer on the wall.
+
+ending
 end
 
-def chorus(number)
-  lyrics = <<lyrics
-#{number} bottles of beer on the wall, #{number} bottles of beer.
-Take one down and pass it around, #{number - 1} bottles of beer on the wall.\n
-lyrics
-  print lyrics
+def bottles(number)
+  if number == 1
+    'bottle'
+  else
+    'bottles'
+  end
 end
 
-(1..100).reverse_each do |number|
-  if number > 2 then chorus(number)
-  elsif number == 2 then single_bottle(number)
-  else ending(number)
+def number(number)
+  if number == 0
+    'no more'
+  else
+    number.to_s
+  end
+end
+
+def new_bottles(number)
+  number -= 1
+  if number == 1
+    'bottle'
+  else
+    'bottles'
+  end
+end
+
+def new_number(number)
+  if number != 0
+    number -= 1
+    if number == 0
+      'no more'
+    else
+      number
+    end
+  else
+    'no more'
+  end
+end
+
+(0...100).reverse_each do |numbers|
+  number = number(numbers)
+  bottle = bottles(numbers)
+  new_number = new_number(numbers)
+  new_bottles = new_bottles(numbers)
+  if numbers == 0
+    new_number = new_number(numbers + 100)
+    new_bottles = new_bottles(numbers + 100)
+    puts ending(number, bottle, new_number, new_bottles)
+  else
+    puts chorus(number, bottle, new_number, new_bottles)
   end
 end
