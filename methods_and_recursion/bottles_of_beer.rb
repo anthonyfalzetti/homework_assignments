@@ -54,16 +54,34 @@ def new_number(number)
   end
 end
 
-(0...100).reverse_each do |numbers|
+def no_more(numbers)
+  number = number(numbers)
+  bottle = bottles(numbers)
+  new_number = new_number(numbers + 100)
+  new_bottles = new_bottles(numbers + 100)
+  puts ending(number, bottle, new_number, new_bottles)
+end
+
+def song(numbers)
   number = number(numbers)
   bottle = bottles(numbers)
   new_number = new_number(numbers)
   new_bottles = new_bottles(numbers)
   if numbers == 0
-    new_number = new_number(numbers + 100)
-    new_bottles = new_bottles(numbers + 100)
-    puts ending(number, bottle, new_number, new_bottles)
+    no_more(numbers)
   else
     puts chorus(number, bottle, new_number, new_bottles)
   end
 end
+
+def number_of_beers(number)
+  if number > 0
+    number -= 1
+    song(number)
+    number_of_beers(number)
+  else
+    ''
+  end
+end
+
+number_of_beers(100)
