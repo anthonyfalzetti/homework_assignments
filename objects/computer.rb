@@ -38,7 +38,7 @@ class Computer
 
   def risk_assessment
     if @risk < 5
-      print "Antivirus has done it's job, current risk level is #{@risk}"
+      puts "Antivirus has done it's job, current risk level is #{@risk}"
       question
     elsif @risk >= 5 && @risk < 10
       print "You caught a virus! You are at #{@risk} risk level."
