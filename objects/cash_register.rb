@@ -15,9 +15,23 @@ class Register
   end
 
   def pay(amount = 0)
-    @total -= amount
-    change = @total * -1
-    @total += change
-    puts "Your change is $#{sprintf('%.2f', change)}"
+    if @total - amount > 0
+      @total -= amount
+      puts "Your new total is $#{sprintf('%.2f', @total)}"
+    else
+      change = amount - @total
+      @total = 0
+      puts "Your change is $#{sprintf('%.2f', change)}"
+    end
   end
 end
+
+register = Register.new
+register.total
+register.purchase(3.78)
+register.purchase(5.22)
+register.total
+register.pay(5.00)
+register.total
+register.pay(5.00)
+register.total
