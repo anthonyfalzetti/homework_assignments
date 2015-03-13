@@ -4,17 +4,17 @@ class Register
   def initialize
     @total = 0
   end
+
   def total
-    @total
-    puts sprintf('%.2f',@total)
+    puts sprintf('%.2f', @total)
   end
-  
-  def purchase(amount=0)
+
+  def purchase(amount = 0)
     @total += amount
-    puts sprintf('%.2f',@total)
+    puts sprintf('%.2f', @total)
   end
-  
-  def pay(amount=0)
+
+  def pay(amount = 0)
     @total -= amount
     change = @total * -1
     @total += change
