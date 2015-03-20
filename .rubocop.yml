@@ -3,3 +3,12 @@ AllCops:
     - 'Guardfile'
     - 'homework_tester/**/*'
     
+Documentation:
+  Enabled: False
+
+Style/FormatString:
+  EnforcedStyle: sprintf
+  SupportedStyles:
+    - format
+    - sprintf
+    - percent
